@@ -6,7 +6,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.viewsets import ModelViewSet
 
 from account_management.models import Account
-from account_management.serializers import AccountSignUpSerializer
+from account_management.serializers import AccountLogInSerializer, AccountUpdateSerializer, AccountSignUpSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -27,12 +27,18 @@ class AccountViewSet(ModelViewSet):
     lookup_field = 'username'
 
     def get_serializer_class(self):
-        if self.request.method == 'POST':
+        if self.request.method == 'PATCH':
+            return AccountUpdateSerializer
+        elif self.request.method == 'POST':
             return AccountSignUpSerializer
+        return AccountLogInSerializer
 
     def get_queryset(self):
         _query = None
         if self.request.method == 'GET':
             username = _p.clean_data(self.request.query_params, self.list_params_template)['username']
+            _query = Account.objects.filter(username=username)
+        elif self.request.method == 'PATCH':
+            username = self.kwargs['username']
             _query = Account.objects.filter(username=username)
         return _query
