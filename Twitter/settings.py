@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'simple_history_field_track',
     #apps
+    'account_management',
 ]
 
 MIDDLEWARE = [
