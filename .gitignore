@@ -1,2 +1,4 @@
 .env
 .idea
+Twitter/__pycache__/
+venv
