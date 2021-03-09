@@ -25,7 +25,7 @@ class AccountSignUpSerializer(serializers.ModelSerializer):
             logger.error('error in creating user due to duplicate username')
             raise serializers.ValidationError(
                 {'error':
-                     'اکانت با این نام‌کاربری وجود دارد لطفا یک نام‌کاربری دیگر انتخاب کنید'}
+                     'اکانت با این نام‌کاربری وجود دارد لطفا نام‌کاربری دیگری را انتخاب کنید'}
             )
         return Account.objects.create(
             **validated_data
