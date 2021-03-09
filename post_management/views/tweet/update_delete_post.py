@@ -22,6 +22,7 @@ class UpdateDeleteTweetView(RetrieveUpdateDestroyAPIView):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.instance = None  # type: Optional[Tweet]
+        # conflict1
 
     def get_object(self):
         if self.instance is None:
