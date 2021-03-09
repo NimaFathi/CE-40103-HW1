@@ -8,7 +8,7 @@ from account_management.models import Account
 class Comment(TimeModel):
     post = models.ForeignKey(Tweet, on_delete=models.CASCADE, verbose_name='توییت')
     context = models.CharField(max_length=250, verbose_name='متن', null=False, blank=False)
-    owner = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='نویسنده کامنت')
+    owner = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='نویسنده')
 
     class Meta:
         verbose_name = 'کامنت'
